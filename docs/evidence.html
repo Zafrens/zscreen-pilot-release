@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Screen evidence register · Zafrens</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+main { max-width: 980px; margin: 0 auto; padding: 40px 24px 80px; }
+h1 { font-size: clamp(28px, 4vw, 36px); margin: 8px 0 12px; }
+h2 { font-size: 20px; margin: 36px 0 10px; }
+p { margin-bottom: 12px; color: var(--ink); }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 20px 0; }
+.card { background: var(--white); border: 1px solid var(--hair); border-radius: 10px; padding: 16px 18px; }
+.card h3 { font-size: 14px; color: var(--navy); margin-bottom: 6px; }
+.card p { font-size: 13.5px; color: var(--slate); margin: 0; }
+@media (max-width: 600px) { main { padding: 24px 16px 60px; } }
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-inner">
+  <a class="brand" href="index.html"><img src="assets/zafrens_logo.png" alt="Zafrens"><span class="brand-text"><small>Evidence register</small>Z-Screen · source tables</span></a>
+  <nav class="nav-links"><a href="index.html">← Portal</a><a href="whitepaper.html">White paper</a><a class="btn btn-primary btn-sm" href="docs/ZScreen_Technical_White_Paper.pdf" target="_blank">Download PDF</a></nav>
+</div></header>
+<main>
+  <div class="kicker">Public edition · chemical structures withheld</div>
+  <h1>Evidence behind the results</h1>
+  <p class="lede">The source tables below make the headline results and nominated compounds inspectable. Download the rows, compare the populations, and follow the provenance manifest to the source analysis. Tables retain compound identifiers and measured results; structure images and SMILES/scaffold fields are withheld. Download hashes refer to the sanitized files; original source hashes are labeled separately.</p>
+
+  <h2>How to read the headline numbers</h2>
+  <div class="cards">
+    <div class="card"><h3>Scale</h3><p>162,914 compounds and 190,699 compound–context profiles describe the <b>pilot dataset</b> analyzed in the white paper, not the platform’s capacity.</p></div>
+    <div class="card"><h3>Prediction</h3><p>On SciPlex3, the Z-Screen-pretrained conditional Chemprop reaches DE50 response <i>r</i> = 0.593 versus 0.449 for a scratch run trained to its validation optimum (58 epochs). A scratch run stopped at the pretrained model’s 7 epochs reaches 0.618, so the +0.144 comparison does not isolate a pretraining advantage in response correlation. Pretraining retains higher DE50 profile <i>R</i>² (0.811 versus 0.794) and lower RMSE (0.177 versus 0.184).</p></div>
+    <div class="card"><h3>Discovery</h3><p>2,626 series–target matches occupy 178 clusters; 2,229 pass the lineage-support gate, which participates in selection. Chemical discovery gives 110 matches across 51 context–series labels; 33 have both internal-control and CRISPR support, including the selected top ten.</p></div>
+    <div class="card"><h3>Calibration</h3><p>CIGS 0.822 is a median matched-panel rank for 17 qualified controls. MZ1 AUROC 0.799 is chromatin-class recovery in H1650. CRISPR 0.580 is a compound median across 25 matched Tier-1 controls.</p></div>
+  </div>
+
+  <h2>Controls that change how a claim should be read</h2>
+  <div class="note amber"><span class="note-title">Training-duration control on SciPlex3</span>The pretrained conditional Chemprop reaches DE50 response <i>r</i> = 0.5931 versus 0.4490 for a scratch run trained to its validation optimum (58 epochs). A scratch run stopped at the same 7 epochs as the pretrained model reaches 0.6175, so the +0.1441 comparison does not isolate a pretraining advantage in response correlation. Pretraining retains higher DE50 profile <i>R</i>² (0.8114 versus 0.7944) and lower response RMSE (0.1766 versus 0.1840). These saved three-seed comparisons cover 83 conditions from nine held-out drugs.</div>
+  <div class="note"><span class="note-title">Unseen building blocks</span>On the same 7,544 unseen-building-block HEK293 compounds, the additive recipe model reaches mean program <i>r</i> = 0.3628, <i>R</i>² = 0.1094 and 2.624× directional enrichment, versus Chemprop 2.3.1 at 0.3367, 0.0888 and 2.534×. Both use 5,721 training and 649 validation profiles. The shared-context three-seed transformer reaches <i>r</i> = 0.3978 and 2.861× enrichment using eight contexts, but its mean program <i>R</i>² is −0.9873: ranking improves while effect-size calibration worsens.</div>
+  <div class="note teal"><span class="note-title">ActiveSeq population pooling</span>Population recognition improves after pooling 32 held-out wells: joint image/RNA exceeds RNA alone by +2.86 percentage points for batch 1 → 2 and +10.48 for batch 2 → 1. Single-well classification shows no consistent gain; the pooled result is a post-fit aggregation under a fixed classifier, not a learned fusion model.</div>
+
+  <h2>Source tables</h2>
+  <div class="table-wrap"><table class="tbl">
+    <thead><tr><th>Dataset</th><th>What it supports</th></tr></thead>
+    <tbody>
+      <tr><td><a href="evidence/platform_counts.json">platform_counts.json</a></td><td>Pilot-dataset scale</td></tr>
+      <tr><td><a href="evidence/fold0_reference_model_summary.csv">fold0_reference_model_summary.csv</a></td><td>Exact per-context simple and transformer results</td></tr>
+      <tr><td><a href="evidence/cold_start_metrics.csv">cold_start_metrics.csv</a></td><td>Unseen-building-block head-to-head on 7,544 HEK293 compounds</td></tr>
+      <tr><td><a href="evidence/sciplex_results.txt">sciplex_results.txt</a></td><td>Matched public SciPlex3 comparison and metric definitions</td></tr>
+      <tr><td><a href="evidence/sciplex_followup_controls.json">sciplex_followup_controls.json</a></td><td>Epoch-matched and weight-shuffled SciPlex3 controls; representation comparisons</td></tr>
+      <tr><td><a href="evidence/replay_savings.csv">replay_savings.csv</a></td><td>Retrospective measurement savings</td></tr>
+      <tr><td><a href="evidence/activeseq_treatment_results.txt">activeseq_treatment_results.txt</a></td><td>ActiveSeq treatment-recognition and population-pooling results</td></tr>
+      <tr><td><a href="evidence/cigs_qualified.csv">cigs_qualified.csv</a></td><td>CIGS qualified-control denominator and panel metrics</td></tr>
+      <tr><td><a href="evidence/cigs_calibration.csv">cigs_calibration.csv</a></td><td>Full-atlas and salt-aware calibration metrics</td></tr>
+      <tr><td><a href="evidence/chemical_leads.csv">chemical_leads.csv</a></td><td>Chemical-reference leads and replication counts</td></tr>
+      <tr><td><a href="evidence/chemical_qualified.csv">chemical_qualified.csv</a></td><td>110 chemical matches reproduced by the source gate</td></tr>
+      <tr><td><a href="evidence/crispr_calibration.csv">crispr_calibration.csv</a></td><td>Compound-level and evaluation-row CRISPR calibration</td></tr>
+      <tr><td><a href="evidence/genetic_leads.csv">genetic_leads.csv</a></td><td>Ten genetic-reference leads and their selection fields</td></tr>
+      <tr><td><a href="evidence/genetic_members.csv">genetic_members.csv</a></td><td>Measured active/inactive analogs, wells and devices</td></tr>
+      <tr><td><a href="evidence/provenance.json">provenance.json</a></td><td>Source paths and SHA-256 hashes for every released table</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Next experiments</h2>
+  <p>Prioritize fresh dose–response measurements and direct target assays for active/inactive compound pairs. Recheck single-well chemical series (ZS-SAR-01, -03, -06, -07) first.</p>
+</main>
+<footer class="site-footer"><div class="inner"><div><b style="color:var(--ink)">Zafrens, Inc.</b> · Z-Screen evidence register · Public edition · October 2026 · <a href="mailto:z-screen@zafrens.com">z-screen@zafrens.com</a></div><div><a href="index.html">Portal</a><a href="whitepaper.html">White paper</a></div></div></footer>
+</body>
+</html>

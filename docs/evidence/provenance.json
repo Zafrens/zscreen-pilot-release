@@ -1,0 +1,103 @@
+[
+  {
+    "download": "genetic_leads.csv",
+    "source": "ZScreen_CRISPR_PerturbSeq_Phenomimicry/results/table6_top10_crispr_sar_lead_programs_and_cliffs.csv",
+    "source_sha256": "256e8dfa9f249f84f09792ddbae9caf1ced280d14d86dba7382577739e7cee75",
+    "sha256": "5ef5ff7efac128984c113134e52b8e29b8ddf8ac25f0c039d739253103a70da6",
+    "public_export_removed_columns": [
+      "inactive_cliff_smiles",
+      "top_active_smiles",
+      "lead_murcko_scaffold"
+    ]
+  },
+  {
+    "download": "genetic_members.csv",
+    "source": "ZScreen_CRISPR_PerturbSeq_Phenomimicry/results/table6b_top10_crispr_sar_member_compounds.csv",
+    "source_sha256": "2dfa6d7dcf4ecc031166b0ad8be47d5cbe0bf794f248d67e96f74b0907c7889d",
+    "sha256": "c709a85f35e8446ef2b70be04f83e2ebfe02eb940869a5651ac69b0afc15da02",
+    "public_export_removed_columns": [
+      "murcko_scaffold",
+      "canonical_smiles"
+    ]
+  },
+  {
+    "download": "chemical_leads.csv",
+    "source": "ZScreen_SmallMolecule_Phenomimicry/results/top10_prioritized_sar_programs.csv",
+    "source_sha256": "eb2b0087509d48592d7263bb914cb4058242b792e15f7b32b7811a362d942d58",
+    "sha256": "8f91e9ede913aa85382912efc4f21bd7cc4440aad4d344bac86f7c73d53fd839",
+    "public_export_removed_columns": [
+      "top_active_smiles",
+      "inactive_cliff_smiles",
+      "lead_murcko_scaffold"
+    ]
+  },
+  {
+    "download": "cigs_qualified.csv",
+    "source": "ZScreen_SmallMolecule_Phenomimicry/results/cigs_reference_qualified_benchmark.csv",
+    "sha256": "3db7f1efb8e9bcdb66b545c6d3525040e2d59961cb18fb7164a52128570d05b9"
+  },
+  {
+    "download": "cigs_calibration.csv",
+    "source": "ZScreen_SmallMolecule_Phenomimicry/results/cigs_control_calibration_benchmark.csv",
+    "sha256": "81cb33fec5511cff8533ddf77fe9e77e4ffb7cb0ed3d3bf3dd38a3474f690780"
+  },
+  {
+    "download": "crispr_calibration.csv",
+    "source": "ZScreen_CRISPR_PerturbSeq_Phenomimicry/results/table1_crispr_control_calibration_summary.csv",
+    "sha256": "df29b8dcf5c5fae579ad8683f8145fa7eb8c86e7ea92a21c83e1293479f59ac9"
+  },
+  {
+    "download": "sciplex_results.txt",
+    "source": "benchmarking/ChatGPT_Workspace/external_sota/comparison/results.md",
+    "sha256": "17423e38bed9d1f90aaefae06b51a97c193d36dd05104bf7c66ee939188ba7ab"
+  },
+  {
+    "download": "replay_savings.csv",
+    "source": "benchmarking/ChatGPT_Workspace/discovery_selection/observed_measurement_savings_summary.csv",
+    "sha256": "0244b0bfdb3686fa7794ec1f4a9694c8f1ffb7274ec3610b30dcb456b2b883e0"
+  },
+  {
+    "download": "platform_counts.json",
+    "source": "Z-Screen Package V2/ZScreen_Pilot_Package_v2.0.0/figures/platform_counts.json",
+    "sha256": "fea6c98eafc5fbe46dca6939ea69cabf13179bb11a91ebd25803fa7f130a5889"
+  },
+  {
+    "download": "chemical_qualified.csv",
+    "source": "ZScreen_SmallMolecule_Phenomimicry/results/all_contexts_sar_discoveries_ranked.csv",
+    "derivation": "Reapplied strict_mask from scripts/08_curate_sar_hypotheses_with_rdkit.py; output hash is for the derived 110-row CSV.",
+    "source_sha256": "5a76f7be23c20e6192bf081b3f670f256139e1dc5d8a659b97a3422f8361f32d",
+    "sha256": "ce7f060a608fbb695bf951d610c81da55f7eb419fc1360a9c54bd3b74db560c5",
+    "public_export_removed_columns": [
+      "top_active_smiles",
+      "inactive_cliff_smiles",
+      "lead_murcko_scaffold"
+    ]
+  },
+  {
+    "source": "ZScreen_CRISPR_PerturbSeq_Phenomimicry/results/table4_genome_wide_crispr_sar_discoveries.csv",
+    "sha256": "3870228ba54bf93732955edb7e9f2c4e08745d26e03608a3a876981e3c9028ee",
+    "rows": 2626,
+    "clusters": 178,
+    "lineage_support": 2229
+  },
+  {
+    "download": "fold0_reference_model_summary.csv",
+    "source": "Z-Screen Package V2/ZScreen_Pilot_Package_v2.0.0/core/benchmark/fold0_reference_model_summary.csv",
+    "sha256": "724a59b966fea4081d29ea769fd0f095014bd8fe30931ef987c4790685e2f09c"
+  },
+  {
+    "download": "sciplex_followup_controls.json",
+    "source": "benchmarking\\Gemini_Workspace\\outputs\\e4_unexplored_angles_summary.json",
+    "sha256": "f970b866d9a0039eb7ccdcbc4f9fd029dcbba7523ed30b7e65ec9bc46cd8a4b7"
+  },
+  {
+    "download": "cold_start_metrics.csv",
+    "source": "benchmarking\\ChatGPT_Workspace\\external_sota\\zscreen_head_to_head\\head_to_head_metrics.csv",
+    "sha256": "7f0fbd5060b59c2f2b2981771f45dd904b93f4744d053efa9535991d8a780430"
+  },
+  {
+    "download": "activeseq_treatment_results.txt",
+    "source": "benchmarking\\ChatGPT_Workspace\\activeseq_appendix\\treatment_benchmark\\RESULTS.md",
+    "sha256": "5b9ee0a11df1e14b7ead6590213ff4b8595cad99bb5161e2f00677c1950c1bc3"
+  }
+]

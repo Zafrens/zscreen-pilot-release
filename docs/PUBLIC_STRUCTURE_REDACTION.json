@@ -1,0 +1,42 @@
+{
+  "scope": "Reviewed portal and its downloads; scientific source directories are not changed.",
+  "replaced_website_assets": [
+    "assets\\figures\\benchmarking\\slide14_render.png",
+    "assets\\figures\\benchmarking\\slide14_s17_Picture 52.png",
+    "assets\\figures\\benchmarking\\slide14_s18_Picture 54.png",
+    "assets\\figures\\benchmarking\\slide14_s19_Picture 56.png",
+    "assets\\figures\\benchmarking\\slide14_s20_Picture 58.png",
+    "assets\\figures\\crispr\\fig5_top_lead_sar_structures_and_activity_cliffs.png",
+    "assets\\figures\\platform\\building_block_lego_shared_fragment_across_libraries.png",
+    "assets\\figures\\small_molecule\\fig4_top_sar_series_chemical_structures_and_cliffs.png",
+    "assets\\figures\\small_molecule\\fig5_sar_programs_6_to_10_structures.png"
+  ],
+  "replaced_word_image_parts": [
+    "/word/media/7118996c3182249ba8b62571ed2dda5dfa095204.png",
+    "/word/media/49bf292024f9fe9041b76242e4096debfa4392b6.png",
+    "/word/media/e8cd51bb14723ffb2d10fe773b4a3a534fc076c5.png"
+  ],
+  "rsi_structure_figure_removed_from_page": 4,
+  "removed_csv_columns": {
+    "chemical_leads.csv": [
+      "top_active_smiles",
+      "inactive_cliff_smiles",
+      "lead_murcko_scaffold"
+    ],
+    "chemical_qualified.csv": [
+      "top_active_smiles",
+      "inactive_cliff_smiles",
+      "lead_murcko_scaffold"
+    ],
+    "genetic_leads.csv": [
+      "inactive_cliff_smiles",
+      "top_active_smiles",
+      "lead_murcko_scaffold"
+    ],
+    "genetic_members.csv": [
+      "murcko_scaffold",
+      "canonical_smiles"
+    ]
+  },
+  "method": "Structure images replaced with newly generated placeholders, with no original pixels; structure encoding columns removed; PDFs and ZIP rewritten."
+}

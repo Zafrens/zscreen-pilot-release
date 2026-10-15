@@ -1,0 +1,55 @@
+# Matched treatment-identification results
+
+The fixed treatment-recognition experiment is complete for ActiveSeq and the released scGeneScope features. Every classifier uses 32 labeled training profiles per treatment, 32 held-out profiles per treatment, training-only PCA to 32 dimensions per modality, and fixed logistic regression. Three seeds vary sampled profiles; they are not three independent biological experiments. The protocol was written before classification outcomes in `PROTOCOL.md`.
+
+## Single-profile primary endpoint
+
+Balanced accuracy, mean ± sample SD over the three sampling seeds:
+
+| Dataset and held-out split | Classes | Image | RNA | Joint |
+|---|---:|---:|---:|---:|
+| ActiveSeq batch 1 → batch 2 | 35 | 0.0378 ± 0.0022 | 0.1482 ± 0.0199 | 0.1387 ± 0.0166 |
+| ActiveSeq batch 2 → batch 1 | 35 | 0.0440 ± 0.0045 | 0.2170 ± 0.0041 | 0.2185 ± 0.0255 |
+| scGeneScope held-out experiment | 27 | 0.0845 ± 0.0106 | 0.3507 ± 0.0092 | 0.3499 ± 0.0161 |
+| scGeneScope within experiment | 27 | 0.1181 ± 0.0112 | 0.3534 ± 0.0183 | 0.3430 ± 0.0024 |
+
+RNA supplies most of the treatment-identification signal in both datasets under this fixed classifier. Straight concatenation does not deliver a consistent single-profile recognition gain. The result usefully distinguishes treatment identity from the continuous within-treatment biological variation measured by the separate exact-pairing analysis.
+
+Chance-adjusted balanced accuracy is `(BA − 1/K)/(1 − 1/K)`. For the primary public held-out experiment, image/RNA/joint scores are 0.0493/0.3257/0.3249. The corresponding ActiveSeq batch-direction values are 0.0095/0.1232/0.1134 and 0.0159/0.1939/0.1955. Full values and seed variation are in `summary.csv` and `joint_benefit_by_seed.csv`.
+
+## Population-level companion: no additional fitting
+
+Mean log-probabilities from the saved classifier outputs were pooled over each treatment's 32 held-out profiles. Their argmax equals that of the mean decision logits. This produces one population-level prediction per treatment, split and seed, using the same data and models as above.
+
+| Dataset and held-out split | Image | RNA | Joint | Joint minus RNA |
+|---|---:|---:|---:|---:|
+| ActiveSeq batch 1 → batch 2 | 0.0476 | 0.1333 | 0.1619 | **+2.86 percentage points** |
+| ActiveSeq batch 2 → batch 1 | 0.1048 | 0.3238 | 0.4286 | **+10.48 percentage points** |
+| scGeneScope held-out experiment | 0.1605 | 0.5679 | 0.5062 | −6.17 percentage points |
+| scGeneScope within experiment | 0.2593 | 0.5309 | 0.5185 | −1.23 percentage points |
+
+ActiveSeq's combined representation improves population recognition relative to RNA alone in five of six batch-direction/seed combinations and ties in the sixth. This is a measured sign of complementary population-level information. The condition-matched companion scores, 0.1714 and 0.4190 for the two ActiveSeq directions, are close to the true-pair joint scores. Therefore these classifier results support modality complementarity after aggregation; they do not isolate an advantage caused by exact pairing. That distinct question is handled by the same-well RNA-prediction experiment.
+
+The pooled results are **post-fit population aggregation**, not a rerun of scGeneScope's original learned multiprofile fusion recipe. Thirty-two ActiveSeq wells and 32 public cells are different assay units and are not asserted to have matched molecular depth or material cost. The source feature encoders also have different training histories. This is a normalized downstream classifier comparison, not an end-to-end leaderboard or platform-superiority claim.
+
+## Compound-level view and deliverables
+
+Every ActiveSeq reference compound is reported in `all_treatment_complementarity.csv` and `all_per_class_joint_benefit.csv`. No compound has a strictly positive single-profile joint-minus-better-unimodal recall benefit in all six batch/seed comparisons. GCN2-IN-7 improves by 0.0417 recall on average and in five of six comparisons; STM2457 has a larger mean gain of 0.0625 with greater variation across batches/seeds. These are descriptive examples within the complete 35-compound table, not a selected success-rate claim.
+
+- `summary.csv`: primary balanced accuracy, chance-adjusted balanced accuracy and macro-F1.
+- `all_metrics_by_seed.csv`, `joint_benefit_by_seed.csv`, `joint_benefit_summary.csv`: fixed-model seed results and paired joint effects.
+- `population_pooling_summary.csv`, `population_pooling_by_seed.csv`, `population_pooling_by_treatment.csv`: complete population-level companion results.
+- `activeseq/` and `scgenescope/`: selected profile metadata, per-class results, fitted training-only transformations, classifier files, prediction probabilities, class labels, source indices and split-specific confusion matrices.
+- `treatment_recognition_matched_budget.png/.svg`: primary and population comparison.
+- `activeseq_all_treatment_complementarity.png/.svg`: all 35 compounds and both held-out batch directions.
+
+The two figures were visually inspected for label readability and clipping. All fits converged without warnings. No classifier or hyperparameter was changed after observing outcomes.
+
+Reproduction commands:
+
+```powershell
+& 'work\benchmarking_runtime\Scripts\python.exe' -u 'work\activeseq_appendix\treatment_benchmark\run_treatment_identification.py' --datasets activeseq
+& 'work\benchmarking_runtime\Scripts\python.exe' -u 'work\activeseq_appendix\treatment_benchmark\run_treatment_identification.py' --datasets scgenescope
+& 'work\benchmarking_runtime\Scripts\python.exe' -u 'work\activeseq_appendix\treatment_benchmark\score_population_pooling.py'
+& 'work\benchmarking_runtime\Scripts\python.exe' -u 'work\activeseq_appendix\treatment_benchmark\plot_treatment_results.py'
+```

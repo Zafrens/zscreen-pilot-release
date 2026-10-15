@@ -1,0 +1,41 @@
+# Direct public SciPlex3 comparison
+
+All 83 held-out drug–dose–cell conditions are scored on the same 2,000-gene axis with equal condition weights. They represent nine unseen drugs and 18,697 measured cells. Released scBalFlow and chemCPA predictions are actual inference from their supplied checkpoints; the two conditional Chemprop arms use identical new public supervision and three paired seeds.
+
+## Mean results across all 83 conditions
+
+| Model | Gene set | Profile R² | Response correlation | Response RMSE | Response MAE |
+|---|---|---:|---:|---:|---:|
+| Control population mean | all2000 | 0.8228 | Undefined | 0.0460 | 0.0113 |
+| Control population mean | official_DE50 | 0.7448 | Undefined | 0.2090 | 0.1260 |
+| Control 8-cell mean | all2000 | 0.6543 | 0.0155 | 0.0716 | 0.0204 |
+| Control 8-cell mean | official_DE50 | 0.5974 | -0.0427 | 0.2678 | 0.1594 |
+| Released chemCPA | all2000 | 0.8292 | 0.2783 | 0.0454 | 0.0116 |
+| Released chemCPA | official_DE50 | 0.7665 | 0.4286 | 0.1991 | 0.1219 |
+| Released scBalFlow | all2000 | 0.6917 | 0.2800 | 0.0676 | 0.0214 |
+| Released scBalFlow | official_DE50 | 0.6171 | 0.3378 | 0.2363 | 0.1373 |
+| Chemprop public only | all2000 | 0.8603 | 0.3882 | 0.0409 | 0.0108 |
+| Chemprop public only | official_DE50 | 0.7976 | 0.4490 | 0.1811 | 0.1114 |
+| Chemprop Z-Screen → public | all2000 | 0.8651 | 0.4760 | 0.0407 | 0.0112 |
+| Chemprop Z-Screen → public | official_DE50 | 0.8114 | 0.5931 | 0.1766 | 0.1101 |
+
+## Matched Z-Screen pretraining effect
+
+Differences below pair the same condition and training seed; positive R²/correlation differences and negative error differences favor Z-Screen pretraining. Seed SD describes model-run variability, not a confidence interval.
+
+| Gene set | Metric | Public only | Z-Screen → public | Paired difference | Seed SD of difference |
+|---|---|---:|---:|---:|---:|
+| all2000 | mean_profile_r2 | 0.8603 | 0.8651 | +0.0048 | 0.0138 |
+| all2000 | delta_pearson | 0.3882 | 0.4760 | +0.0879 | 0.0448 |
+| all2000 | delta_rmse | 0.0409 | 0.0407 | -0.0002 | 0.0019 |
+| all2000 | delta_mae | 0.0108 | 0.0112 | +0.0004 | 0.0004 |
+| official_DE50 | mean_profile_r2 | 0.7976 | 0.8114 | +0.0138 | 0.0165 |
+| official_DE50 | delta_pearson | 0.4490 | 0.5931 | +0.1441 | 0.0621 |
+| official_DE50 | delta_rmse | 0.1811 | 0.1766 | -0.0045 | 0.0101 |
+| official_DE50 | delta_mae | 0.1114 | 0.1101 | -0.0013 | 0.0067 |
+
+Response correlation uses predicted and observed changes from the same all-training-control mean. The population-control baseline has no predicted change, so its response correlation is undefined. Response RMSE/MAE equal the corresponding absolute-profile errors because the same control is subtracted from both vectors. Negative R² values are retained.
+
+The released models have their authors’ original training histories. Their comparison establishes external reference performance on this public panel; the matched Chemprop comparison estimates the contribution of Z-Screen pretraining under fixed public supervision. These results evaluate condition means, not full single-cell distributions.
+
+Per-cell, per-drug, per-seed and per-condition values, training labels and paired effects are saved beside this report. Nine drugs underlie the 83 related cell/dose contexts; no claim of 83 independent chemical samples or statistical significance is made.
