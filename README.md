@@ -1,51 +1,38 @@
-# Z-Screen Pilot Release
+# Z-Screen investor & collaborator portal
 
-Source for [www.z-screen.com](https://www.z-screen.com) and the five-preprint pilot release from Zafrens (April 2026).
+Source for [www.z-screen.com](https://www.z-screen.com): the Z-Screen discovery platform portal, the technical white paper (web edition and PDF), and the evidence register behind every reported number.
 
-> **Status: pre-bioRxiv draft.** These five manuscripts are draft preprints posted publicly so we can collect technical feedback before formal bioRxiv submission. The website is intentionally unindexed (`noindex` meta tag) during this period. Treat this as an early-look artifact, not a final release.
+> The site is intentionally unindexed (`noindex` meta tag). It is shared by link with investors and scientific collaborators.
 
 ## What lives here
 
-- `docs/` - the public website (served by GitHub Pages at www.z-screen.com)
-- `docs/pdfs/` - the five preprint PDFs, plus the bundled all-in-one PDF
-- `docs/CNAME` - custom-domain configuration
+- `docs/` - the public website, served by GitHub Pages from this folder
+  - `docs/index.html` - portal (platform, benchmarks, chemical and genetic twins, prioritized programs, figure atlas)
+  - `docs/whitepaper.html` - technical white paper, web edition
+  - `docs/docs/ZScreen_Technical_White_Paper.pdf` - technical white paper, print PDF (V2.0, October 2026)
+  - `docs/docs/RSI_Therapeutics_White_Paper_Draft.pdf` - companion volume, *Recursive Self-Improvement in Therapeutics*
+  - `docs/evidence.html` and `docs/evidence/` - source tables with SHA-256 hashes and provenance
+  - `docs/assets/figures/wp/` - figures generated directly from the evidence tables (SVG)
+- `docs/CNAME` - custom-domain configuration (do not remove)
 
-## What lives on Zenodo
+## Scope of the numbers
 
-The full reproducibility bundle (canonical dataset, per-paper analysis scripts, manuscripts) is deposited on Zenodo with a citable DOI:
+All compound and profile counts on the site describe the Z-Screen pilot dataset analyzed in the white paper (pilot package V2: 162,914 compounds, 190,699 compound-context profiles). They are not platform limits; Z-Screen is designed to scale to millions of compounds and beyond.
 
-**DOI: [10.5281/zenodo.19872807](https://doi.org/10.5281/zenodo.19872807)**
+Chemical structure images and SMILES/scaffold fields are withheld in this public edition; tables retain compound identifiers and measured results (see `docs/PUBLIC_STRUCTURE_REDACTION.json`).
 
-The bundle contains:
-- 615,793 mRNA-seq profiles across 12 combinatorial libraries and 4 cell lines
-- scVI latent coordinates, chemistry embeddings (raw SMILES replaced with embeddings, see audit script)
-- Per-paper analysis scripts and reproduction READMEs (`paperN/scripts/`, `paperN/README.md`)
-- Manuscripts in markdown and rendered PDF
-- LINCS L1000 cross-platform benchmarking module
+## Previous release
 
-To re-run any paper's analysis end-to-end, download the Zenodo bundle and follow the per-paper README.
+This portal supersedes the April 2026 five-preprint briefing that was previously served here. The reproducibility bundle for that release remains on Zenodo: [10.5281/zenodo.19872807](https://doi.org/10.5281/zenodo.19872807).
 
-## The five preprints
+## Rebuilding
 
-| # | Title | Question |
-|---|---|---|
-| 01 | ActiveSeq | Can we measure what a compound does and read why, from the same well? |
-| 02 | Generative Chemistry | Does combinatorial chemistry yield a learnable design map? |
-| 03 | Generalization Ladder | Does the model generalize to new chemistry, or memorize the training set? |
-| 04 | Cross-Cell Transfer | Does the response transfer across cell types we never assayed? |
-| 05 | Causal Reasoning | Does the screen point at mechanism, automatically? |
-
-Read the layman summaries at [www.z-screen.com](https://www.z-screen.com).
-
-## Citation
-
-If you use the dataset or build on this work during the draft period, please cite the Zenodo DOI (above). When the formal preprints post to bioRxiv, those will be the canonical citation.
+The site is generated from a private build folder (white-paper text, figure generator, portal template); `docs/` is the exported, ready-to-serve output. Regenerate and re-export from that folder, then replace `docs/` (keeping `docs/CNAME`).
 
 ## License
 
 - Website code (HTML/CSS/JS) in `docs/`: MIT (see `LICENSE`)
-- Preprint PDFs in `docs/pdfs/`: CC-BY 4.0 (draft versions)
-- Dataset: see Zenodo deposit for license
+- White paper PDFs: (c) Zafrens, Inc.
 
 ## Contact
 
