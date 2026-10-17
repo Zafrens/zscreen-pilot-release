@@ -7,7 +7,7 @@ Source for [www.z-screen.com](https://www.z-screen.com): the Z-Screen discovery 
 ## What lives here
 
 - `docs/` - the public website, served by GitHub Pages from this folder
-  - `docs/index.html` - portal (platform, benchmarks, chemical and genetic twins, prioritized programs, figure atlas)
+  - `docs/index.html` - portal (platform, benchmarks, chemical and genetic twins, prioritized programs)
   - `docs/whitepaper.html` - technical white paper, web edition
   - `docs/docs/ZScreen_Technical_White_Paper.pdf` - technical white paper, print PDF (V2.0, October 2026)
   - `docs/docs/RSI_Therapeutics_White_Paper_Draft.pdf` - companion volume, *Recursive Self-Improvement in Therapeutics*
