@@ -77,7 +77,7 @@
       <div class="kicker">Zafrens · Technical white paper · Version 2.0 · October 2026</div>
       <h1>Z-Screen: Combinatorial Perturbation Transcriptomics, Model Benchmarking and Multi-Atlas Phenomimicry</h1>
       <p class="sub">How a readable chemical grammar, same-well multimodal nanowell measurement and calibrated chemical–genetic phenomimicry turn whole-transcriptome screening into an engine for therapeutic discovery</p>
-      <div class="meta"><span><b>Edition</b> Public edition · chemical structures withheld</span><span><b>Dataset</b> Z-Screen pilot package V2 (162,914 compounds)</span><span><b>Evidence</b> <a href="evidence.html">source tables and hashes</a></span></div>
+      <div class="meta"><span><b>Edition</b> Public edition · chemical structures withheld</span><span><b>Dataset</b> Z-Screen pilot package V2 (162,914 compounds) · <a href="https://huggingface.co/datasets/Zafrens/zscreen-pilot" target="_blank" rel="noopener">Hugging Face</a> · <a href="http://32.190.137.56/" target="_blank" rel="noopener">interactive atlas</a></span><span><b>Evidence</b> <a href="evidence.html">source tables and hashes</a></span></div>
       <div class="cta"><a class="btn btn-primary" href="docs/ZScreen_Technical_White_Paper.pdf" target="_blank">Download the PDF</a><a class="btn btn-outline" href="#summary">Read the summary</a></div>
     </div>
     <!-- White paper body. Edited by hand; assembled into whitepaper.html and the PDF by build.mjs.
@@ -88,7 +88,7 @@
   <div class="kicker">Executive summary</div>
   <h2>What this paper shows</h2>
   <p class="lede">Z-Screen is Zafrens’ nanowell screening platform. It pairs combinatorial small-molecule synthesis from reusable building blocks with whole-transcriptome and high-content imaging readouts, at up to 50,000 conditions per run and a company operating specification below $2 per condition.</p>
-  <p>This white paper analyzes the <b>Z-Screen pilot dataset</b> released as Package V2 (<code>ZScreen_Pilot_Package_v2.0.0</code>): <b>162,914 unique compounds</b> assembled from <b>627 recurring building blocks</b>, profiled as <b>190,699 compound–context transcriptional profiles</b> across eight library–cell contexts, plus an <b>11,435-nanowell ActiveSeq</b> same-well imaging-and-RNA co-assay. The pilot is a sample of what the platform measures, not its ceiling: Z-Screen is designed to scale to millions, and potentially hundreds of millions, of compounds.</p>
+  <p>This white paper analyzes the <b>Z-Screen pilot dataset</b> released as Package V2 (<code>ZScreen_Pilot_Package_v2.0.0</code>, available on <a href="https://huggingface.co/datasets/Zafrens/zscreen-pilot" target="_blank" rel="noopener">Hugging Face</a>): <b>162,914 unique compounds</b> assembled from <b>627 recurring building blocks</b>, profiled as <b>190,699 compound–context transcriptional profiles</b> across eight library–cell contexts, plus an <b>11,435-nanowell ActiveSeq</b> same-well imaging-and-RNA co-assay. The pilot is a sample of what the platform measures, not its ceiling: Z-Screen is designed to scale to millions, and potentially hundreds of millions, of compounds.</p>
   <p>Five workstreams are reported, each with its saved evidence tables:</p>
   <ol class="wp-list">
     <li><b>Platform and combinatorial grammar.</b> Cellular responses decompose by building block: computationally removing one block from a trained model reproduces its measured effect at median Spearman <i>r</i> = 0.89–0.94, and fragment-level weights rebuild whole-block effects at <i>r</i> = 0.97–0.99.</li>
@@ -136,6 +136,7 @@
 
   <h3>1.2 The pilot dataset analyzed here</h3>
   <p>In the public Package V2 release, raw sequencing reads across 46,944 human genes are depth-normalized, background-adjusted with the documented context-specific baseline, harmonized onto a 6,000-gene high-variance expression surface, and projected onto a pinned <i>k</i> = 32 semi-nonnegative matrix factorization (semi-NMF) transcriptional program basis (<i>W</i> ∈ ℝ<sup>32×6000</sup>). Across four combinatorial libraries (<code>ZEL024</code>, <code>ZEL028</code>, <code>ZEL031</code>, <code>ZEL039</code>) and five human cell lines (HEK293, H1650, A549, THP1 and AEC7 endothelial cells), the pilot dataset comprises <b>190,699 compound–context profiles</b> spanning <b>162,914 unique compounds</b> assembled from <b>627 active positional building blocks</b> (<code>bb0</code>–<code>bb4</code>).</p>
+  <p>The release is public. The pilot dataset is published on Hugging Face as <a href="https://huggingface.co/datasets/Zafrens/zscreen-pilot" target="_blank" rel="noopener">Zafrens/zscreen-pilot</a>, with pinned per-file manifests and SHA-256 hashes; the evidence tables in Section 7 derive from that release. An interactive <a href="http://32.190.137.56/" target="_blank" rel="noopener">Functional Drug Atlas</a> (http://32.190.137.56/) lets readers browse a portion of the measured responses.</p>
   <div class="note">
     <span class="note-title">Scope of the numbers in this paper</span>
     Every count, correlation and match reported here refers to the pilot dataset. It establishes that the platform’s measurements are learnable and transferable; it does not bound the platform’s capacity, which is designed to scale to millions of compounds and beyond.
@@ -476,6 +477,7 @@
     <li><b>Calibration metrics and affine <i>R</i>².</b> Internal <i>R</i>² on <code>zel024_hek293</code> (0.493) incorporates a post-hoc linear affine calibration fitted on validation predictions. External SciPlex3 <i>R</i>² and Δ<i>r</i> are evaluated directly in the official 2,000-HVG and DE50 gene spaces without target leakage.</li>
     <li><b>Selected-set statistics.</b> The 84.9% lineage-support fraction is computed after selection with an OR gate that includes holdout support. The CIGS 0.822 median is a matched-panel rank on 17 qualified controls. Neither is a prospective replication rate.</li>
     <li><b>Public edition.</b> Chemical structure images and SMILES/scaffold fields are withheld. Tables retain compound identifiers and measured results. Download hashes refer to the sanitized files; source hashes are recorded separately in <code>evidence/provenance.json</code>.</li>
+    <li><b>Data availability.</b> The pilot dataset is published on Hugging Face at <a href="https://huggingface.co/datasets/Zafrens/zscreen-pilot" target="_blank" rel="noopener">huggingface.co/datasets/Zafrens/zscreen-pilot</a>; the evidence tables below are derived from that release. An interactive Functional Drug Atlas covering a portion of the dataset is available at <a href="http://32.190.137.56/" target="_blank" rel="noopener">http://32.190.137.56/</a>.</li>
   </ul>
   <h3>Evidence register</h3>
   <div class="table-wrap">
@@ -504,7 +506,7 @@
 
 <footer class="site-footer"><div class="inner">
   <div><b>Zafrens, Inc.</b> · Z-Screen Technical White Paper · Version 2.0 · October 2026 · <a href="mailto:z-screen@zafrens.com">z-screen@zafrens.com</a></div>
-  <div><a href="index.html">Portal</a><a href="evidence.html">Evidence register</a><a href="docs/ZScreen_Technical_White_Paper.pdf" target="_blank">PDF</a></div>
+  <div><a href="index.html">Portal</a><a href="evidence.html">Evidence register</a><a href="docs/ZScreen_Technical_White_Paper.pdf" target="_blank">PDF</a><a href="https://huggingface.co/datasets/Zafrens/zscreen-pilot" target="_blank" rel="noopener">Dataset (Hugging Face)</a><a href="http://32.190.137.56/" target="_blank" rel="noopener">Interactive atlas</a></div>
 </div></footer>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()"><img id="lightbox-img" src="" alt="Enlarged figure"></div>
