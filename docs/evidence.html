@@ -35,7 +35,7 @@ p { margin-bottom: 12px; color: var(--ink); }
   <div class="cards">
     <div class="card"><h3>Scale</h3><p>162,914 compounds and 190,699 compound–context profiles describe the <b>pilot dataset</b> analyzed in the white paper, not the platform’s capacity.</p></div>
     <div class="card"><h3>Prediction</h3><p>On SciPlex3, the Z-Screen-pretrained conditional Chemprop reaches DE50 response <i>r</i> = 0.593 versus 0.449 for a scratch run trained to its validation optimum (58 epochs). A scratch run stopped at the pretrained model’s 7 epochs reaches 0.618, so the +0.144 comparison does not isolate a pretraining advantage in response correlation. Pretraining retains higher DE50 profile <i>R</i>² (0.811 versus 0.794) and lower RMSE (0.177 versus 0.184).</p></div>
-    <div class="card"><h3>Discovery</h3><p>2,626 series–target matches occupy 178 clusters; 2,229 pass the lineage-support gate, which participates in selection. Chemical discovery gives 110 matches across 51 context–series labels; 33 have both internal-control and CRISPR support, including the selected top ten.</p></div>
+    <div class="card"><h3>Discovery</h3><p>2,626 series–target matches occupy 178 clusters; 2,229 pass the lineage-support gate, which participates in selection. Chemical discovery gives 110 matches across 51 context–series labels; 33 have both internal-control and CRISPR support, including all ten highest-ranked chemical-twin series.</p></div>
     <div class="card"><h3>Calibration</h3><p>CIGS 0.822 is a median matched-panel rank for 17 qualified controls. MZ1 AUROC 0.799 is chromatin-class recovery in H1650. CRISPR 0.580 is a compound median across 25 matched Tier-1 controls.</p></div>
   </div>
 
@@ -60,7 +60,7 @@ p { margin-bottom: 12px; color: var(--ink); }
       <tr><td><a href="evidence/chemical_leads.csv">chemical_leads.csv</a></td><td>Chemical-reference leads and replication counts</td></tr>
       <tr><td><a href="evidence/chemical_qualified.csv">chemical_qualified.csv</a></td><td>110 chemical matches reproduced by the source gate</td></tr>
       <tr><td><a href="evidence/crispr_calibration.csv">crispr_calibration.csv</a></td><td>Compound-level and evaluation-row CRISPR calibration</td></tr>
-      <tr><td><a href="evidence/genetic_leads.csv">genetic_leads.csv</a></td><td>Ten genetic-reference leads and their selection fields</td></tr>
+      <tr><td><a href="evidence/genetic_leads.csv">genetic_leads.csv</a></td><td>The ten highest-ranked genetic-twin series and their selection fields</td></tr>
       <tr><td><a href="evidence/genetic_members.csv">genetic_members.csv</a></td><td>Measured active/inactive analogs, wells and devices</td></tr>
       <tr><td><a href="evidence/provenance.json">provenance.json</a></td><td>Source paths and SHA-256 hashes for every released table</td></tr>
     </tbody>
