@@ -12,5 +12,6 @@ Rebuilding the site and PDF
   The white paper text lives in _build/content.html; the portal page in _build/index.template.html; the generated figures in _build/figures.mjs (built from the evidence/ CSVs).
   node _build/build.mjs          regenerates assets/figures/wp/*.svg, whitepaper.html and index.html
   node _build/build.mjs --pdf    also renders docs/ZScreen_Technical_White_Paper.pdf (needs Google Chrome and `npm install puppeteer-core` inside _build)
+                                 The print edition keeps the stylesheet it was published with (_build/print_site.css); assets/site.css styles the web pages only.
 
   node _build/export.mjs         writes a clean drop-in copy of the site (only referenced files, plus .nojekyll) to _build/out/site for hosting, e.g. as /portal on z-screen.com
