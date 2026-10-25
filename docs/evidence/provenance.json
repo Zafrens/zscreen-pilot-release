@@ -47,11 +47,6 @@
     "sha256": "df29b8dcf5c5fae579ad8683f8145fa7eb8c86e7ea92a21c83e1293479f59ac9"
   },
   {
-    "download": "sciplex_results.txt",
-    "source": "benchmarking/ChatGPT_Workspace/external_sota/comparison/results.md",
-    "sha256": "17423e38bed9d1f90aaefae06b51a97c193d36dd05104bf7c66ee939188ba7ab"
-  },
-  {
     "download": "replay_savings.csv",
     "source": "benchmarking/ChatGPT_Workspace/discovery_selection/observed_measurement_savings_summary.csv",
     "sha256": "0244b0bfdb3686fa7794ec1f4a9694c8f1ffb7274ec3610b30dcb456b2b883e0"
@@ -84,11 +79,6 @@
     "download": "fold0_reference_model_summary.csv",
     "source": "Z-Screen Package V2/ZScreen_Pilot_Package_v2.0.0/core/benchmark/fold0_reference_model_summary.csv",
     "sha256": "724a59b966fea4081d29ea769fd0f095014bd8fe30931ef987c4790685e2f09c"
-  },
-  {
-    "download": "sciplex_followup_controls.json",
-    "source": "benchmarking\\Gemini_Workspace\\outputs\\e4_unexplored_angles_summary.json",
-    "sha256": "f970b866d9a0039eb7ccdcbc4f9fd029dcbba7523ed30b7e65ec9bc46cd8a4b7"
   },
   {
     "download": "cold_start_metrics.csv",
